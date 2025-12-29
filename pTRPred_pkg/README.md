@@ -1,10 +1,7 @@
 # pTRPred
-
-Provides methods for constructing monitoring signals from raw channels, 
-ARIMAX residuals, and rolling singular value decomposition (SVD), 
-combined with robust multi-scale slope-based detection to identify emerging changes in time series. 
+This provides methods for detecting early warning signal for the battery thermal runaway. 
+Combined with robust multi-scale slope-based detection to identify emerging changes in time series.
 Includes visualization tools for overlaying detection scores with original signals. 
-Applications include real-time monitoring of thermal runaway in battery studies and other change detection problems.
 
 A small utility library that provides:
 
