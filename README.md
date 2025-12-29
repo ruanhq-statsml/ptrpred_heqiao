@@ -1,4 +1,4 @@
-# pTRPred: Python Version of Thermal Runaway Early-Warning Signal
+# pTRPred: Python Version of TRPred
 
 A small utility library that provides:
 
@@ -12,11 +12,13 @@ A small utility library that provides:
 ## Install (editable, for development)
 
 ``` bash
-python -m pip install -U pip
-python -m pip install -e ".[dev,arima,fast]"
+pip install pTRPred
 ```
 
-If you do not need ARIMAX functionality, omit `arima`. If you do not need sparse/fast eigensolvers, omit `fast`.
+## Load Package 
+``` bash
+import pTRPred
+```
 
 ## Run tests
 
