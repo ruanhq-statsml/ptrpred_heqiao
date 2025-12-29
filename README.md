@@ -57,7 +57,7 @@ fig, ax1, ax2 = plot_detection_overlay(
 )
 ```
 
-![](datasets/pTRPred_unittest1.png)
+![](docs/figures/pTRPred_unittest1.png)
 
 2. ARIMAX residuals -> detector(single dependent + predictors)
 ```         
@@ -100,7 +100,7 @@ fig, ax1, ax2 = plot_detection_overlay(
 )
 ```
 
-![](datasets/pTRPred_unittest2.png)
+![](docs/figures/pTRPred_unittest2.png)
 
 3. Rolling SVD -> Detector
 ```         
@@ -145,5 +145,5 @@ fig, ax1, ax2 = plot_detection_overlay(
     threshold=1.3
 )
 ```
-![](datasets/pTRPred_unittest3.png)
+![](docs/figures/pTRPred_unittest3.png)
 
