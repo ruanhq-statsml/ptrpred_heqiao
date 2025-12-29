@@ -67,4 +67,4 @@ fig, ax1, ax2 = plot_detection_overlay(
 )
 ```
 
-![](images/pTR_unittest.png)
+![](datasets/pTR_unittest.png)
