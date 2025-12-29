@@ -18,7 +18,7 @@ import pTRPred
 -   Rolling SVD (eigendecomposition) of per-window covariance (`roll_svd`)
 -   ARIMAX fitting and batch residual extraction (`fit_arimax_vec`, `arimax_residuals_df`)
 -   Pipelines that combine ARIMAX residualization + rolling SVD (`arimax_then_roll_svd`)
--   Signal builders and multi-scale slope-vote change detectors (`detect_asvotes`, `detect_realtime`)
+-   Signal builders and multi-scale slope-vote real-time change detectors (`detect_asvotes`, `detect_realtime`)
 -   Simple plotting utilities (`plot_detection_overlay`)
 
 ## Run tests
