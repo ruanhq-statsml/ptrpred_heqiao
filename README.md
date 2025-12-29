@@ -21,18 +21,6 @@ If you do not need ARIMAX functionality, omit `arima`. If you do not need sparse
 ## Run tests
 
 ``` bash
-import numpy as np
-import pandas as pd
-import pytest
-import numpy as np
-import pandas as pd
-
-# If you're using the packaged version:
-# from pTRPred import build_signal_raw, detect_realtime, plot_detection_overlay
-# Otherwise (if functions are in your current namespace), you can omit the import.
-
-from pTRPred import build_signal_raw, detect_realtime, plot_detection_overlay
-
 # Reproducibility (R's set.seed(1))
 np.random.seed(1)
 
