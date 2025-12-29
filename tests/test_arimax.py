@@ -1,5 +1,7 @@
-from pTRPred import *
+from pTRPred import arimax_residuals_df, fit_arimax_vec
 import pytest
+import numpy as np  
+import pandas as pd
 
 def test_fit_arimax_vec_smoke():
     pm = pytest.importorskip("pmdarima")

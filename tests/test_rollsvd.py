@@ -1,5 +1,7 @@
-from pTRPred import *
 import pytest
+import numpy as np  
+import pandas as pd
+from pTRPred import roll_svd, as_tibble_rollsvd
 
 def test_roll_svd_values_only_shapes_and_order():
     n = 30

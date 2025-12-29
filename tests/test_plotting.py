@@ -1,5 +1,8 @@
-from pTRPred import *
 import pytest
+import numpy as np 
+import pandas as pd
+from pTRPred import plot_detection_overlay
+
 
 
 def test_plot_detection_overlay_smoke(tmp_path):
