@@ -193,13 +193,16 @@ def run_plot_t_result(out_base: Path) -> None:
             df["signal"] = df["temperature"]
 
         first_idx = _first_exceedance_index(df)
-        first_signal = float(df.loc[first_idx, "signal"]) if first_idx is not None and first_idx < len(df) else None
+        first_signal = float(df["signal"].iloc[first_idx]) if first_idx is not None and first_idx < len(df) else None
         first_time = df["time_ind"].iloc[first_idx].item() if first_idx is not None else None
-
+        dname = _dataset_name_from_t_result_path(path)
+        soc = _parse_soc(dname) if dname else None
+        display_name = (dname or base_id.replace("_", "-"))
         if first_signal is not None and first_time is not None:
-            title = f"{path.stem.split('.')[0]} | First ≥ 0.3 at T = {first_signal:.1f} °C (index {int(first_time)})"
+            soc_str = f" {soc}% SOC |" if soc is not None else " "
+            title = f"{display_name} |{soc_str} First ≥ 0.3 at T = {first_signal:.1f} °C (index {int(first_time)})"
         else:
-            title = base_id.replace("_", "-")
+            title = display_name
 
         # Overlay
         fig = _plot_overlay(
