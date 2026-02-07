@@ -78,8 +78,8 @@ OE-LFP10Ah-70SOC-cell6,"No effect, local heating, internal discharge – 2",2,FP
 OE-LFP10Ah-80SOC-cell13,"Moderate effect, extended joule heating, local reactions (no spread) – 3",3,NA,27.7,2,LFP
 OE-LFP10Ah-80SOC-Cell15,"No effect, local heating, internal discharge – 2",2,TP,149.6,1,LFP
 OE-LFP10Ah-80SOC-cell3,"Moderate effect, extended joule heating, local reactions (no spread) – 3",3,FP,128.3,0,LFP
-OE-LFP10Ah-80SOC-cell4,"Moderate effect, extended joule heating, local reactions (no spread) – 3",3,FP,-9999,0,LFP
-OE-NMC10Ah-20SOC,"Moderate effect, extended joule heating, local reactions (no spread) – 3",3,FP,-9999,0,NMC
+OE-LFP10Ah-80SOC-cell4,"Moderate effect, extended joule heating, local reactions (no spread) – 3",3,TN,-9999,0,LFP
+OE-NMC10Ah-20SOC,"Moderate effect, extended joule heating, local reactions (no spread) – 3",3,TN,-9999,0,NMC
 OE-NMC10Ah-20SOC-cell2,"Moderate effect, extended joule heating, local reactions (no spread) – 3",3,TP,35.9,1,NMC
 OE-NMC10Ah-45SOC,"Moderate effect, extended joule heating, local reactions (limited spread) – 4",4,FP,-9999,1,NMC
 OE-NMC10Ah-45SOC-cell2,"Moderate effect, extended joule heating, local reactions (limited spread) – 4",4,TP,13.1,1,NMC
@@ -119,5 +119,3 @@ Soteria-SCC-80SOC-cell1,"No effect, instant local Joule heating, no internal dis
 Soteria-SCC-90SOC-cell1,"No effect, instant local Joule heating, no internal discharge – 1",1,FP,-9999,0,SO
 ,,,#VALUE!,#DIV/0!,,
 ,,,,-9999,,
-,,,,,,
-,,,,,,
