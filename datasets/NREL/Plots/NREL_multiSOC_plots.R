@@ -28,7 +28,7 @@ plot_detection_overlay <- function(
   first_det_col = NULL,
   score_label = "Real-Time Detected Value",
   signal_label = "Temperature",
-  x_label = "Time index",
+  x_label = "time indices(0.1 second)",
   threshold = NULL,
   scale_factor = NULL,
   score_color = "blue",
@@ -192,7 +192,7 @@ for (cell_id in cells_multi) {
       title = title_j,
       score_label = "Detection",
       signal_label = "Temperature (°C)",
-      x_label = "Time index",
+      x_label = "time indices(0.1 second)",
       threshold = THRESHOLD,
       score_color = "red",
       signal_color = "darkblue",
@@ -237,7 +237,7 @@ for (cell_id in cells_multi) {
     if (!is.na(first_t)) pj <- pj + geom_vline(xintercept = first_t, linetype = "dotted", color = "darkgreen", linewidth = 1)
     pj <- pj + labs(
       title = sprintf("%d%% SOC — Temp at ≥0.3: %.1f °C", row$SOC, res$temp_at_03),
-      x = "Time index", y = "Real-time detection value"
+      x = "time indices(0.1 second)", y = "Real-time detection value"
     ) + theme_minimal(base_size = 10) + theme(panel.grid.minor = element_blank())
     plots_list[[length(plots_list) + 1]] <- pj
   }
@@ -279,7 +279,7 @@ for (cell_id in cells_multi) {
     facet_wrap(~ SOC_label, scales = "free_x", ncol = 2) +
     labs(
       title = paste0("Same cell: ", cell_id, " — Detection value around first exceedance of 0.3"),
-      x = "Time index", y = "Real-time detection value"
+      x = "time indices(0.1 second)", y = "Real-time detection value"
     ) +
     theme_minimal(base_size = 11) +
     theme(panel.grid.minor = element_blank(), strip.text = element_text(face = "bold"))
@@ -309,7 +309,7 @@ for (soc_val in socs_multi) {
       title = title_j,
       score_label = "Detection",
       signal_label = "Temperature (°C)",
-      x_label = "Time index",
+      x_label = "time indices(0.1 second)",
       threshold = THRESHOLD,
       score_color = "red",
       signal_color = "darkblue",
@@ -345,7 +345,7 @@ for (soc_val in socs_multi) {
     if (!is.na(first_t)) pj <- pj + geom_vline(xintercept = first_t, linetype = "dotted", color = "darkgreen", linewidth = 1)
     pj <- pj + labs(
       title = sprintf("%s — Temp at ≥0.3: %.1f °C", row$dataset_name, res$temp_at_03),
-      x = "Time index", y = "Real-time detection value"
+      x = "time indices(0.1 second)", y = "Real-time detection value"
     ) + theme_minimal(base_size = 10) + theme(panel.grid.minor = element_blank())
     plots_list[[length(plots_list) + 1]] <- pj
   }
@@ -378,7 +378,7 @@ for (soc_val in socs_multi) {
     facet_wrap(~ cell_label, scales = "free_x", ncol = 2) +
     labs(
       title = paste0("Same SOC (", soc_val, "%) — different cells. Detection value, start to detected+200."),
-      x = "Time index", y = "Real-time detection value"
+      x = "time indices(0.1 second)", y = "Real-time detection value"
     ) +
     theme_minimal(base_size = 11) +
     theme(panel.grid.minor = element_blank(), strip.text = element_text(face = "bold"))
@@ -386,4 +386,4 @@ for (soc_val in socs_multi) {
   ggsave(out_file, plot = p_facet, width = 10, height = 2.5 * ceiling(length(unique(big$cell_label)) / 2), dpi = 300)
   message("Saved: ", out_file)
 }
-
+#Try the LSTM/Transformer based method and see whether it can predict the thermal runaway earlier?

@@ -35,6 +35,7 @@ THRESHOLD = 0.3
 POINTS_AFTER_DETECTED = 200
 PANELS_PER_PAGE_SEVERITY = 4  # 2x2
 MULTI_PANELS_PER_ROW = 2
+XLABEL = "time indices(0.1 second)"
 
 
 def _base_id_from_t_result_path(path: Path) -> str:
@@ -120,7 +121,7 @@ def _plot_overlay(
     ax1.plot(x, sg, color=signal_color, linewidth=1, alpha=0.85, label=signal_label)
     ax1.set_ylabel(signal_label, color=signal_color)
     ax1.tick_params(axis="y", labelcolor=signal_color)
-    ax1.set_xlabel("Time index")
+    ax1.set_xlabel(XLABEL)
 
     ax2 = ax1.twinx()
     ax2.plot(x, sc, color=score_color, linewidth=1, label=score_label)
@@ -158,7 +159,7 @@ def _plot_detection_only(
     ax.axhline(y=threshold, linestyle="--", color="darkred", linewidth=1)
     if first_ind is not None:
         ax.axvline(x=first_ind, linestyle=":", color="darkgreen", linewidth=1)
-    ax.set_xlabel("Time index")
+    ax.set_xlabel(XLABEL)
     ax.set_ylabel("Real-time detection value")
     ax.set_title(title)
     ax.set_ylim(-0.2, 1.0)
@@ -493,7 +494,7 @@ def run_plot_across_severity(out_base: Path) -> None:
                 if df["_first_ind"].iloc[0] is not None:
                     ax.axvline(x=df["_first_ind"].iloc[0], linestyle=":", color="darkgreen", linewidth=1)
                 ax.set_title(df["_title"].iloc[0])
-                ax.set_xlabel("Time index")
+                ax.set_xlabel(XLABEL)
                 ax.set_ylabel("Detection")
                 ax.set_ylim(-0.2, 0.6)
             for j in range(len(page_dfs), len(axes)):
@@ -514,7 +515,7 @@ def run_plot_across_severity(out_base: Path) -> None:
                 if df["_first_ind"].iloc[0] is not None:
                     ax.axvline(x=df["_first_ind"].iloc[0], linestyle=":", color="darkgreen", linewidth=1)
                 ax.set_title(df["_title"].iloc[0])
-                ax.set_xlabel("Time index")
+                ax.set_xlabel(XLABEL)
                 ax.set_ylabel("Temperature (°C)")
                 ax2.set_ylabel("Detection")
                 ax2.set_ylim(-0.2, 1.0)

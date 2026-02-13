@@ -76,6 +76,7 @@ All figures live under `Plots/`. The following subfolders and script define what
 - **Reproduction:** For each T_result CSV, add a time index column, then:
   - **Overlay:** plot temperature (e.g. left axis) and detection (e.g. right axis); add threshold 0.3 and optional vertical line at first exceedance.
   - **Detection-only:** plot `detected_value_rt` vs time index; add horizontal line at 0.3 and vertical line at first time ≥ 0.3.
+- **X-axis:** Use label **"time indices(0.1 second)"** (one index = 0.1 s).
 
 ### 3.2 `Plots/plot_svd_result/`
 
@@ -85,7 +86,7 @@ All figures live under `Plots/`. The following subfolders and script define what
   - `{base_id}_SVD_detection.png`  
   (again `base_id` with hyphens → underscores, e.g. `1500mAh2-20S0C` → `1500mAh2_20S0C`).
 - **Data source:** `Battery_cells/SVD_result/*_30_100_SVD_detects.csv`.
-- **Reproduction:** Use columns `time_ind`, `signal` (σ₁), `detected_value_rt`; same overlay vs detection-only logic as T_result, with signal label “First singular value (σ₁)” and title/annotation for first ≥ 0.3 (value and index).
+- **Reproduction:** Use columns `time_ind`, `signal` (σ₁), `detected_value_rt`; same overlay vs detection-only logic as T_result, with signal label “First singular value (σ₁)” and title/annotation for first ≥ 0.3 (value and index). X-axis label: **"time indices(0.1 second)"**.
 
 ### 3.3 `Plots/plot_multi_cells/`
 

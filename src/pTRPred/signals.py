@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 
 from .arimax import arimax_residuals_df, fit_arimax_vec
+from .kernelpca import roll_kernel_pca
 from .preprocessing import extract_X
 from .rollsvd import roll_svd
 
@@ -59,6 +60,55 @@ def build_signal_svd(
     )
     s1 = [(np.nan if (d is None or len(d) < 1) else float(d[0])) for d in fit["D"]]
     return pd.DataFrame({"time_ind": fit["windows"]["t_rep"].to_numpy(), "signal": np.asarray(s1, dtype=float)})
+
+
+def build_signal_kernel_pca(
+    data: pd.DataFrame,
+    time: str,
+    x_cols: Sequence[str] | str,
+    window: int,
+    step: int = 1,
+    align: Literal["end", "center", "start"] = "end",
+    type: Literal["rolling", "expanding"] = "rolling",
+    center: bool = True,
+    scale_: bool = True,
+    kernel: Literal["rbf", "poly", "linear", "cosine"] = "rbf",
+    gamma: Optional[float] = None,
+    coef0: float = 1.0,
+    degree: int = 3,
+    na_action: Literal["omit_rows", "impute_mean", "pairwise_complete"] = "omit_rows",
+    seed: Optional[int] = None,
+) -> pd.DataFrame:
+    """
+    Rolling Kernel PCA first eigenvalue per window → (t_rep, signal).
+
+    Same interface as build_signal_svd; signal = first component eigenvalue of kernel matrix.
+    """
+    fit = roll_kernel_pca(
+        data=data,
+        time=time,
+        x_cols=x_cols,
+        window=window,
+        step=step,
+        align=align,
+        type=type,
+        center=center,
+        scale_=scale_,
+        n_components=1,
+        kernel=kernel,
+        gamma=gamma,
+        coef0=coef0,
+        degree=degree,
+        na_action=na_action,
+        seed=seed,
+    )
+    s1 = [(np.nan if (d is None or len(d) < 1) else float(d[0])) for d in fit["D"]]
+    return pd.DataFrame(
+        {
+            "time_ind": fit["windows"]["t_rep"].to_numpy(),
+            "signal": np.asarray(s1, dtype=float),
+        }
+    )
 
 
 def build_signal_arimax_resid(
