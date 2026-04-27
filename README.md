@@ -21,6 +21,10 @@ import pTRPred
 -   Signal builders and multi-scale slope-vote real-time change detectors (`detect_asvotes`, `detect_realtime`)
 -   Simple plotting utilities (`plot_detection_overlay`)
 
+## Documentation
+
+-   **[Computational complexity](docs/COMPLEXITY.md)** — Time/space complexity of all main routines, with emphasis on the **real-time (streaming) update** path (`OnlineRealtimeDetector`, `OnlineASVotesSliding`).
+
 ## Run tests
 
 1. Raw Signal -> Real-Time Detector
