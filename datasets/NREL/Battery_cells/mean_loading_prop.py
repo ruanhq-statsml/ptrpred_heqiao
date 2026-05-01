@@ -46,8 +46,10 @@ src_dir = Path("processed_data")
 files = sorted(
 [p for p in src_dir.glob("*.csv")
 if ("xlsx_reform_severity_level" in p.name or ".xlsx" in p.name)])
+#The files are the list of them illustrating the severity levels
 
-#extract all of the datasets and visualize them:
+#extract all of the datasets and visualize them,
+#the window size and the step-size are the points.
 WINDOW = 200
 STEP = 15
 if not os.path.exists(f"mean_loading_prop_analysis/mean_{WINDOW}_{STEP}"):
