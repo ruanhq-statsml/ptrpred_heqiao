@@ -18,13 +18,11 @@ def _drop_junk_cols(df: pd.DataFrame) -> pd.DataFrame:
     junk = [c for c in df.columns if c in {"X", "X.x", "X.y"} or c.startswith("Unnamed:")]
     return df.drop(columns=junk, errors="ignore")
 
-
 def _infer_dataset_col(df: pd.DataFrame) -> str:
     for c in ["dataset", "dataset_name", "Dataset", "name"]:
         if c in df.columns:
             return c
     raise ValueError(f"Cannot find dataset column in detection file. Columns={list(df.columns)}")
-
 
 def _infer_value_col(df: pd.DataFrame, dataset_col: str) -> str:
     """Pick the single numeric column (excluding dataset col)."""
@@ -50,7 +48,6 @@ def _parse_start_max_from_filename(path: Path) -> Optional[Tuple[int, int]]:
     if not m:
         return None
     return int(m.group(1)), int(m.group(2))
-
 
 # -----------------------------
 # Loading + merging
@@ -78,14 +75,11 @@ def load_base_results(
             raise ValueError(f"Base file must contain '{dataset_key}' column.")
     return df
 
-
 def load_detection_file(path: Path) -> pd.DataFrame:
     df = pd.read_csv(path)
     df = _drop_junk_cols(df)
-
     dataset_col = _infer_dataset_col(df)
     value_col = _infer_value_col(df, dataset_col)
-
     parsed = _parse_start_max_from_filename(path)
     if parsed is None:
         # fallback: keep the original value_col name
@@ -93,10 +87,8 @@ def load_detection_file(path: Path) -> pd.DataFrame:
     else:
         start_w, max_w = parsed
         out_col = f"X{start_w}_{max_w}"
-
     out = df[[dataset_col, value_col]].rename(columns={dataset_col: "dataset_name", value_col: out_col})
     return out
-
 
 def merge_detection_results(base: pd.DataFrame, det_paths: Iterable[Path]) -> pd.DataFrame:
     out = base.copy()
@@ -104,7 +96,6 @@ def merge_detection_results(base: pd.DataFrame, det_paths: Iterable[Path]) -> pd
         det = load_detection_file(p)
         out = out.merge(det, on="dataset_name", how="left")
     return out
-
 
 # -----------------------------
 # Classification + summaries
@@ -202,7 +193,6 @@ def plot_threshold_sensitivity(
     cols = [c for c in sub.columns if patt.match(c)]
     if not cols:
         return
-
     long = sub.melt(
         id_vars=[label_col],
         value_vars=cols,
@@ -210,7 +200,6 @@ def plot_threshold_sensitivity(
         value_name="value",
     )
     long["threshold"] = long["setting"].str.extract(r"_(\d+)$").astype(int)
-
     # map labels
     def _map_lab(x):
         if x == 1:
